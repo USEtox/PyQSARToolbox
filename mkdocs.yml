@@ -1,0 +1,36 @@
+site_name: PyQSARToolbox
+site_description: Python client for the local QSAR Toolbox Web API
+site_url: https://usetox.github.io/PyQSARToolbox/
+repo_url: https://github.com/USEtox/PyQSARToolbox
+repo_name: USEtox/PyQSARToolbox
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.instant
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - API Reference: api.md
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: false
+            docstring_style: google
+            merge_init_into_class: true
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - tables
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
