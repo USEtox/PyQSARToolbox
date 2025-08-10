@@ -52,6 +52,10 @@ tree = qs.get_endpoints_tree()
 calculators = qs.get_available_calculators()
 ```
 
+## Endpoint tree
+The following figure shows a graph of the end point tree:  
+![Endpoint tree](endpoints_tree.png)
+
 ## Error Handling
 
 Most methods raise ValueError with the HTTP status code if the API responds with an error. Wrap calls in try/except for resilience.
