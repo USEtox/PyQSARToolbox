@@ -1,3 +1,5 @@
+[![Documentation](https://img.shields.io/badge/docs-PyQSARToolbox-blue.svg)](https://usetox.github.io/PyQSARToolbox/)
+
 # PyQSARToolbox
 A Python interface to the [OECD](https://www.oecd.org/en.html) [QSAR Toolbox](https://qsartoolbox.org/download/). It only works on Windows since it is the only operating system for which QSAR Toolbox is released.
 
