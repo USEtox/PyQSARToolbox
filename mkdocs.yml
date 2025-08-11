@@ -16,6 +16,11 @@ theme:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Search for Chemicals: search_chemicals.md
+  - Experimental Data: extract_data.md
+  - QSAR Models: run_qsar.md
+  - Step by Step: step_by_step.md
+  - Workflows: workflows.md
   - API Reference: api.md
 plugins:
   - search
