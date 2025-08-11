@@ -32,27 +32,15 @@ print("Detected port:", find_open_port())
 
 ```python
 from pyqsartoolbox import QSARToolbox
-qs = QSARToolbox(port=62008)  # use the port you found
-print(qs.toolbox_version())
-```
-
-## Common Operations
-
-```python
-# Search by CAS (with or without dashes)
-qs.search_CAS("50-00-0")
-
-# Search by name
-qs.search_name("formaldehyde")
-
-# Endpoint tree
-tree = qs.get_endpoints_tree()
-
-# List calculators
-calculators = qs.get_available_calculators()
+qs = QSARToolbox(port=port_number, timeout=30) # use the port given by QSAR Toolbox Websuite
+api_version = qs.webapi_version()
+toolbox_version = qs.toolbox_version()
+print(f"API version: {api_version}")
+print(f"Toolbox version: {toolbox_version}")
 ```
 
 ## Endpoint tree
+
 The following figure shows a graph of the end point tree:  
 ![Endpoint tree](endpoints_tree.png)
 
@@ -60,6 +48,6 @@ The following figure shows a graph of the end point tree:
 
 Most methods raise ValueError with the HTTP status code if the API responds with an error. Wrap calls in try/except for resilience.
 
-## Next Steps
+## Next Step
 
-Dive into the full [API Reference](api.md) for advanced features.
+How to [search the databases](search_chemicals.md) for chemicals using different identifiers.
