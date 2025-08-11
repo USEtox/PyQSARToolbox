@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=67", "wheel"]
+requires = ["setuptools>=75", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,14 +7,13 @@ name = "pyqsartoolbox"
 version = "0.1.0"
 description = "Python client for the local QSAR Toolbox Web API"
 readme = "README.md"
-license = { file = "LICENSE" }
+license = "MIT"
 authors = [
-  { name = "PyQSARToolbox Developers" }
+  { name = "Ali A. Eftekhari", email = "e.eftekhari@gmail.com" }
 ]
 classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.9",
-  "License :: OSI Approved :: MIT License",
   "Intended Audience :: Science/Research",
   "Topic :: Scientific/Engineering :: Chemistry",
   "Operating System :: OS Independent"
@@ -24,6 +23,10 @@ dependencies = [
   "requests>=2.31.0",
   "pandas>=1.5.0"
 ]
+
+[project.urls]
+Homepage = "https://github.com/USEtox/PyQSARToolbox"
+Documentation = "https://usetox.github.io/PyQSARToolbox/"
 
 [project.optional-dependencies]
 dev = [

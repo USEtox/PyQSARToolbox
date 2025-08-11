@@ -36,4 +36,4 @@ print(chem["ChemId"], chem["Names"])
 
 ## Documentation
 
-See the [API Reference](api.md) for all available methods.
+[Get started here!](getting-started.md)
