@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://usetox.github.io/PyQSARToolbox/</loc>
+         <lastmod>2025-12-10</lastmod>
+    </url>
+    <url>
+         <loc>https://usetox.github.io/PyQSARToolbox/api/</loc>
+         <lastmod>2025-12-10</lastmod>
+    </url>
+    <url>
+         <loc>https://usetox.github.io/PyQSARToolbox/extract_data/</loc>
+         <lastmod>2025-12-10</lastmod>
+    </url>
+    <url>
+         <loc>https://usetox.github.io/PyQSARToolbox/getting-started/</loc>
+         <lastmod>2025-12-10</lastmod>
+    </url>
+    <url>
+         <loc>https://usetox.github.io/PyQSARToolbox/run_qsar/</loc>
+         <lastmod>2025-12-10</lastmod>
+    </url>
+    <url>
+         <loc>https://usetox.github.io/PyQSARToolbox/search_chemicals/</loc>
+         <lastmod>2025-12-10</lastmod>
+    </url>
+    <url>
+         <loc>https://usetox.github.io/PyQSARToolbox/step_by_step/</loc>
+         <lastmod>2025-12-10</lastmod>
+    </url>
+    <url>
+         <loc>https://usetox.github.io/PyQSARToolbox/workflows/</loc>
+         <lastmod>2025-12-10</lastmod>
+    </url>
+</urlset>
