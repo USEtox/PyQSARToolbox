@@ -340,8 +340,8 @@ class QSARToolbox():
         """
         Get the QSAR models for a position in the endpoint tree.
         """
-        # make position url friendly
-        position = quote(position)
+        # make position url friendly, be careful with '/' character that appears in some strings
+        position = quote(position, safe='')
         response = requests.get(f"{self.base_url}/qsar/list/{position}")
         if response.status_code == 200:
             return response.json()
