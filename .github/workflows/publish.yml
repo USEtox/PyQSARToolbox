@@ -1,0 +1,87 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Build distributions
+        run: uv build
+
+      - name: Validate artifacts
+        run: |
+          ls -la dist
+          test -n "$(ls dist/*.whl)"
+          test -n "$(ls dist/*.tar.gz)"
+
+      - name: Check package metadata
+        run: uvx twine check dist/*
+
+      - name: Validate tag matches package version
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          python - <<'PY'
+          import glob
+          import os
+
+          tag_version = os.environ["TAG_VERSION"]
+          files = glob.glob("dist/*.whl") + glob.glob("dist/*.tar.gz")
+          if not files:
+              raise SystemExit("No dist artifacts found")
+
+          versions = set()
+          for file in files:
+              name = os.path.basename(file)
+            if name.endswith(".whl"):
+              stem = name[:-4]
+              parts = stem.split("-")
+              if len(parts) < 2:
+                raise SystemExit(f"Unexpected wheel filename: {name}")
+              version = parts[1]
+            elif name.endswith(".tar.gz"):
+              stem = name[:-7]
+              prefix = "pyqsartoolbox-"
+              if not stem.startswith(prefix):
+                raise SystemExit(f"Unexpected sdist filename: {name}")
+              version = stem[len(prefix):]
+            else:
+              raise SystemExit(f"Unexpected artifact type: {name}")
+            versions.add(version)
+
+          if len(versions) != 1:
+              raise SystemExit(f"Multiple artifact versions found: {versions}")
+
+          version = versions.pop()
+          print(f"Tag version: {tag_version}")
+          print(f"Artifact version: {version}")
+          if version != tag_version:
+              raise SystemExit("Tag version does not match artifact version")
+          PY
+        env:
+          TAG_VERSION: ${{ github.ref_name }}
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

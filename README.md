@@ -40,6 +40,35 @@ print(f"Toolbox version: {toolbox_version}")
 # Documents
 API documents are [here](https://usetox.github.io/PyQSARToolbox/). You can also look at the [notebooks folder](./notebooks) to find notebooks with extensive examples of the usage of this package for real world problems.
 
+# Release
+Releases are automated from Git tags and published to PyPI by GitHub Actions.
+
+Prerequisite (one-time): configure the PyPI project for Trusted Publishing with this GitHub repository.
+
+To release version `0.2.0`:
+```
+git checkout main
+git pull
+uv sync
+uv build
+uvx twine check dist/*
+git tag -a v0.2.0 -m "Release v0.2.0"
+git push origin v0.2.0
+```
+
+Or use the helper script to create and push the tag:
+```
+uv run python scripts/release_tag.py 0.2.0
+```
+
+Optional flags:
+```
+uv run python scripts/release_tag.py 0.2.0 --dry-run
+uv run python scripts/release_tag.py 0.2.0 --remote origin
+```
+
+Pushing a `v*` tag triggers `.github/workflows/publish.yml`, which builds the package and publishes to PyPI.
+
 # Citations
 Please cite it as  
 ```
